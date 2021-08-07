@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/TemplatePage.cshtml";
+}
+@model CustomerMVCApp.Models.ViewModels.AddViewModel
+
+<article class="rectangle">
+    <h1>Registration Form</h1>
+    <br />
+    @using (Html.BeginForm("Add", "Home", FormMethod.Post))
+    {
+        @Html.Label("Name: ")
+        @Html.TextBoxFor(m => m.Name)
+        @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+        <br />
+        <br />
+        @Html.Label("Location: ")
+        @Html.TextBoxFor(m => m.Location)
+        @Html.ValidationMessageFor(m => m.Location, "", new { @class = "text-danger" })
+        <br />
+        <br />
+        @Html.Label("Balance: ")
+        @Html.TextBoxFor(m => m.Balance, new { @type = "number" })
+        @Html.ValidationMessageFor(m => m.Balance, "", new { @class = "text-danger" })
+        <br />
+        <br />
+        @Html.RadioButtonFor(m => m.Type, "Basic", new { @id = "basic" })
+        @Html.Label("Basic", new { @for = "basic" })
+        <label>   </label>
+        @Html.RadioButtonFor(m => m.Type, "Gold", new { @id = "gold" })
+        @Html.Label("Gold", new { @for = "gold" })
+        @Html.ValidationMessageFor(m => m.Type, "", new { @class = "text-danger" })
+        <br /><br />
+        <input class="btn btn-success" type="submit" />
+    }
+</article>
